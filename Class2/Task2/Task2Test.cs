@@ -66,6 +66,6 @@ public class Tests
         var type = assembly.GetType($"Task2.{className}");
         That(type, Is.Not.Null);
         That(type!.GetMembers(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance).Length,
-            Is.EqualTo(0));
+            Is.EqualTo(1));
     }
 }

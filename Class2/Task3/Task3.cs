@@ -23,10 +23,18 @@
     {
         internal static void PrintMessageFrom(Creature creature)
         {
-            throw new NotImplementedException();
+            var result = creature switch
+            {
+                Dog dog => dog.Bark(),
+                Alien alien => alien.Command(),
+                Human human => human.Greeting(),
+                _ => throw new ArgumentException("Unsupported type"),
+            };
+            Console.WriteLine(result);
         }
 
-        static List<Dog> FindDogs(List<Creature> creatures) => throw new NotImplementedException();
+        static List<Dog> FindDogs(List<Creature> creatures) =>
+            (from creature in creatures where creature is Dog select creature as Dog).ToList();
 
         public static void Main(string[] args)
         {
